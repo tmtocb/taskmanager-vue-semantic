@@ -57,10 +57,19 @@ var app = new Vue({
       console.log('task deleted');
     },
     editTask: function(event, id) {
-      event.stopImmediatePropagation();
-      let task = this.tasks.find( item => item.id == id);
+      let task = this.tasks.find( item => item.id == id );
       if (task) {
         this.task = { id: id, name: task.name, description: task.description, completed: task.completed };
+      }
+    },
+    updateTask: function(event, id) {
+      event.stopImmediatePropagation();
+      event.preventDefault();
+      let task = this.tasks.find( item => item.id == id );
+      if (task) {
+        task.name = this.task.name;
+        task.description = this.task.description;
+        task.completed = this.task.completed;
       }
     }
   }
