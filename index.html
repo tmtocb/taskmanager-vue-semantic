@@ -6,8 +6,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
   </head>
   <body>
-    <div id="app">
-      {{ message }}
+    <div id="app" class="pushable">
+      <div class="ui sidebar inverted vertical menu visible fixed left">
+        <div class="ui logo item">
+          <b><i class="icon tasks purple"></i>Task Manager</b>
+        </div>
+        <div class="item">
+          <div class="ui message green">
+            Use this tool to manage your todos. Have fun!
+          </div>
+        </div>
+      </div>
+      <div class="ui container pusher">
+        {{ message }}
+      </div>
     </div>
     <script src="app.js"></script>
   </body>
