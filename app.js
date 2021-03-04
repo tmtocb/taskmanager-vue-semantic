@@ -7,6 +7,7 @@ var app = new Vue({
       { id: 3, name: 'Todo 411', description: 'This is a todo', completed: true },
       { id: 4, name: 'Todo 4', description: 'This is a todo', completed: true }
     ],
+    task: {},
     message: 'Hello World!!!!!!!!!'
   },
   components: {
@@ -22,6 +23,7 @@ var app = new Vue({
                     </div>
                   </div>
                   <div class="right floated three wide column">
+                    <i class="icon pencil blue" alt="Edit" v-on:click="app.editTask($event, task.id)"></i>
                     <i class="icon trash red" alt="Delete" v-on:click="app.deleteTask($event, task.id)"></i>
                   </div>
                 </div>
@@ -53,6 +55,13 @@ var app = new Vue({
         this.$delete(this.tasks, taskIndex);
       }
       console.log('task deleted');
+    },
+    editTask: function(event, id) {
+      event.stopImmediatePropagation();
+      let task = this.tasks.find( item => item.id == id);
+      if (task) {
+        this.task = { id: id, name: task.name, description: task.description, completed: task.completed };
+      }
     }
   }
 })       
