@@ -4,6 +4,7 @@
     <title>Task Management App</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <div id="app" class="pushable">
@@ -21,12 +22,24 @@
         <div class="ui grid">
           <div class="six wide column">
             <div id="todo" class="tasklist">
-              <div v-for="task in todoTasks">
+              <div class="ui header">
+                <i class="icon play circle orange"></i>In Progress Tasks ({{ todoTasks.length }})
+              </div>
+              <div 
+                class="ui segment task"
+                v-bind:class="task.completed ? 'done' : 'todo'"
+                v-for="task in todoTasks">
                 {{ task.name }}: {{ task.description }} completed? {{ task.completed }}
               </div>
             </div>
             <div id="completed" class="tasklist">
-              <div v-for="task in completedTasks">
+              <div class="ui header">
+                <i class="icon check circle green"></i>Completed Tasks ({{ completedTasks.length }})
+              </div>
+              <div 
+                class="ui segment task"
+                v-bind:class="task.completed ? 'done' : 'todo'"
+                v-for="task in completedTasks">
                 {{ task.name }}: {{ task.description }} completed? {{ task.completed }}
               </div>
             </div>
