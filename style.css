@@ -14,3 +14,7 @@
   color:  slategrey;
   font-style:  italic;
 }
+
+.task.done label {
+  text-decoration: line-through;
+}
